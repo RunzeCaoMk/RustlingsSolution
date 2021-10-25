@@ -23,8 +23,8 @@ impl From<CreationError> for ParsePosNonzeroError {
         // TODO: complete this implementation so that the `?` operator will
         // work for `CreationError`
         match e {
-            CreationError::Negative => return ParsePosNonzeroError::Creation(CreationError::Negative),
-            CreationError::Zero => return ParsePosNonzeroError::Creation(CreationError::Zero),
+            CreationError::Negative => return Self::Creation(CreationError::Negative),
+            CreationError::Zero => return Self::Creation(CreationError::Zero),
         }
     }
 }
@@ -36,7 +36,9 @@ impl From<ParseIntError> for ParsePosNonzeroError {
     fn from(e: ParseIntError) -> Self {
         // TODO: complete this implementation so that the `?` operator will
         // work for `ParseIntError`
-        ParsePosNonzeroError::ParseInt(e)
+        Self::ParseInt(e)
+        // Another way to pass:
+        // ParsePosNonzeroError::ParseInt(e)
     }
 }
 
